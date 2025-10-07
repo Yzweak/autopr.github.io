@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AutoPR: Automatic academic promotion with PRBench and PRAgent">
+  <meta name="keywords" content="AutoPR, PRBench, PRAgent, academic promotion, multimodal agents">
+  <link rel="icon" href="img/autopr_logo.png" type="image/png">
+  <title>AutoPR</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css"
+        integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/explore.css">
+
+  <link rel="stylesheet" href="./LLaVA_files/css">
+  <link rel="stylesheet" href="./LLaVA_files/bulma.min.css">
+  <link rel="stylesheet" href="./LLaVA_files/bootstrap.min.css">
+  <link rel="stylesheet" href="./LLaVA_files/index.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <div id="nav">
+    <div id="icon">
+      <img src="img/autopr_logo_alpha.png" alt="AutoPR logo">
+      <a class="nav-button" href="#home" style="margin-left: 6px; font-size: 24px">AutoPR</a>
+    </div>
+    <div>
+      <a class="nav-button" href="#home">Home</a>
+      <a class="nav-button" href="#highlights">Highlights</a>
+      <a class="nav-button" href="#task">Task</a>
+      <a class="nav-button" href="#benchmark">Benchmark</a>
+      <a class="nav-button" href="#framework">Framework</a>
+      <a class="nav-button" href="#results">Results</a>
+      <a class="nav-button" href="showcase.html">Showcase</a>
+      <a class="nav-button" href="https://huggingface.co/spaces/yzweak/AutoPR" target="_blank">Demo</a>
+      <a class="nav-button" href="#citation">Citation</a>
+      <a class="nav-button" href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              <span style="display: inline-block; vertical-align: middle; margin-top: 40px;">
+                <img src="img/autopr_logo.png" alt="AutoPR logo" style="height: 90px; width: auto;">
+              </span>
+            </h1>
+            <h3 class="title is-3 publication-title">AutoPR: Let's Automate Your Academic Promotion!</h3>
+            <div class="is-size-5">
+              <span class="author-block"><a href="https://lightchen233.github.io" style="color:#008AD7;font-weight:normal;">Qiguang Chen</a>*,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Zheng Yan*</a>,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Mingda Yang*</a>,&nbsp;</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=8lVpK1QAAAAJ&hl=en" style="color:#008AD7;font-weight:normal;">Libo Qin</a>,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Yixin Yuan</a>,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Hanjing Li</a>,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Jinhao Liu</a>,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Yiyan Ji</a>,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Dengyun Peng</a>,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Jiannan Guan</a>,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Mengkang Hu</a>,&nbsp;</span>
+              <span class="author-block"><a style="color:#008AD7;font-weight:normal;">Yantao Du</a>,&nbsp;</span>
+              <span class="author-block"><a href="http://ir.hit.edu.cn/~car/" style="color:#008AD7;font-weight:normal;">Wanxiang Che</a></span>
+            </div>
+            <div class="is-size-6" style="margin-top: 1.2rem;">
+              <span class="author-block"><b style="color:#008AD7; font-weight:normal">> </b>LARG, Harbin Institute of Technology</span><br>
+              <span class="author-block"><b style="color:#94070A; font-weight:normal">> </b>Central South University</span><br>
+              <span class="author-block"><b style="color:#07944b; font-weight:normal">> </b>The University of Hong Kong</span><br>
+              <span class="author-block"><b style="color:#CC8800; font-weight:normal">> </b>ByteDance China (Seed)</span>
+            </div>
+            <div style="margin-top: 30px;" class="publication-links">
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark" aria-disabled="true">
+                  <span class="icon">
+                    <svg id="logomark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.732 24.269" aria-hidden="true" focusable="false">
+                      <g id="tiny">
+                        <path d="M573.549,280.916l2.266,2.738,6.674-7.84c.353-.47.52-.717.353-1.117a1.218,1.218,0,0,0-1.061-.748h0a.953.953,0,0,0-.712.262Z" transform="translate(-566.984 -271.548)" fill="#bdb9b4" />
+                        <path d="M579.525,282.225l-10.606-10.174a1.413,1.413,0,0,0-.834-.5,1.09,1.09,0,0,0-1.027.66c-.167.4-.047.681.319,1.206l8.44,10.242h0l-6.282,7.716a1.336,1.336,0,0,0-.323,1.3,1.114,1.114,0,0,0,1.04.69A.992.992,0,0,0,571,293l8.519-7.92A1.924,1.924,0,0,0,579.525,282.225Z" transform="translate(-566.984 -271.548)" fill="#b31b1b" />
+                        <path d="M584.32,293.912l-8.525-10.275,0,0L573.53,280.9l-1.389,1.254a2.063,2.063,0,0,0,0,2.965l10.812,10.419a.925.925,0,0,0,.742.282,1.039,1.039,0,0,0,.953-.667A1.261,1.261,0,0,0,584.32,293.912Z" transform="translate(-566.984 -271.548)" fill="#bdb9b4" />
+                      </g>
+                    </svg>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/LightChen233/AutoPR" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <svg class="svg-inline--fa fa-share-square fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="share-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                      <path fill="currentColor" d="M568.482 177.448L424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z" />
+                    </svg>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/yzweak/PRBench" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <svg class="svg-inline--fa fa-database fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="database" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                      <path fill="currentColor" d="M448 73.143v45.714C448 159.143 347.667 192 224 192S0 159.143 0 118.857V73.143C0 32.857 100.333 0 224 0s224 32.857 224 73.143zM448 176v102.857C448 319.143 347.667 352 224 352S0 319.143 0 278.857V176c48.125 33.143 136.208 48.572 224 48.572S399.874 209.143 448 176zm0 160v102.857C448 479.143 347.667 512 224 512S0 479.143 0 438.857V336c48.125 33.143 136.208 48.572 224 48.572S399.874 369.143 448 336z" />
+                    </svg>
+                  </span>
+                  <span>PRBench Dataset</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/yzweak/AutoPR" class="external-link button is-normal is-rounded is-dark" onclick="return false;">
+                  <span class="icon" aria-hidden="true">🤗</span>
+                  <span>Demo</span>
+                </a>
+              </span>
+            </div>
+            <p style="margin-top: 18px; font-size: 0.95rem;">* Equal contribution - Contact: qgchen@ir.hit.edu.cn, zyan@ir.hit.edu.cn, car@ir.hit.edu.cn, lbqin@csu.edu.cn</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="highlights" style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Key Highlights</h2>
+          <div class="columns is-multiline">
+            <div class="column is-one-third">
+              <div class="box">
+                <h3 class="title is-5">AutoPR Task</h3>
+                <p>Formalizes automatic translation of scholarly papers into channel-aware promotion content optimized for fidelity, alignment, and engagement.</p>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="box">
+                <h3 class="title is-5">PRBench Benchmark</h3>
+                <p>512 expertly curated paper-to-post pairs across platforms, complete with weighted factual checklists and human preference judgements.</p>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="box">
+                <h3 class="title is-5">PRAgent Framework</h3>
+                <p>Three-stage agentic pipeline that boosts watch time by 604% and likes by 438% over strong LLM and rule baselines.</p>
+              </div>
+            </div>
+          </div>
+          <div class="columns is-centered" style="margin-top: 24px;">
+            <div class="column is-full">
+              <figure class="image" style="margin: 0 auto;">
+                <img src="img/framework-widened.png" alt="Overview of the PRAgent framework" class="highlight-framework">
+              </figure>
+              <p class="has-text-centered showcase-callout">
+                <em><strong>Curious about how AutoPR performs in practice? Visit our <a href="showcase.html">Showcase</a> for detailed case studies.</strong></em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="abstract">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              As the volume of peer-reviewed research surges, scholars increasingly rely on social platforms for discovery while authors invest significant effort in promotion to sustain visibility and citations. We introduce Automatic Promotion (AutoPR), a new task that translates research papers into faithful, engaging, and well-timed public-facing content. To enable rigorous study, we release PRBench, a multimodal benchmark linking 512 peer-reviewed articles to high-quality promotional materials and evaluating systems along three axes: Fidelity (accuracy and tone), Engagement (stakeholder targeting and appeal), and Alignment (timing and channel optimization). We further present PRAgent, a modular agentic framework that automates scholarly promotion in three stages: hierarchical content extraction with multimodal preparation; collaborative multi-agent synthesis for polished, publication-ready outputs; and platform-specific adaptation that models norms, tone, and tagging to maximize reach. Against strong LLM pipelines and rule-based tools on PRBench and downstream social metrics, PRAgent delivers substantial gains, including up to a 604\% increase in total watch time, a 438\% increase in likes, and at least a 2.9x rise in overall engagement. Ablations attribute the largest improvements to platform modeling and targeted promotion. Our results establish AutoPR as a tractable, measurable research problem and chart a path toward scalable, trustworthy, and impactful automated scholarly communication.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="task">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Automatic Promotion Task</h2>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              <strong>AutoPR frames scholarly promotion as conditional generation over rich research assets.</strong>
+              Each instance starts from a research dossier \(\mathbb{D} = (D_T, D_V, D_S)\) that bundles the full manuscript, figure-caption pairs, and supplementary materials with curated talking points.
+              A dissemination target \((\mathbb{T}_P, \mathbb{T}_A)\) specifies the delivery platform and intended audience persona, grounding tone, cadence, and visual affordances.
+            </p>
+            <p class="has-text-centered">
+              \[\hat{P} = \operatorname*{argmax}\limits_{P} \Pr\big(P \mid \mathbb{D}, \mathbb{T}_P, \mathbb{T}_A\big)\]
+            </p>
+            <p>
+              <strong>The generator seeks a Pareto-efficient post \(\hat{P}\) that negotiates competing objectives.</strong>
+              AutoPR scores candidate posts with a triad of metrics that reward trustworthy science communication while honoring channel norms.
+            </p>
+            <ul>
+              <li><strong>Fidelity</strong> \(\mathcal{S}_{\text{Fidelity}}\) checks factual accuracy, coverage of core claims, and preservation of scientific nuance against \(\mathbb{D}\).</li>
+              <li><strong>Alignment</strong> \(\mathcal{S}_{\text{Align}}\) measures stylistic fit, pacing, and media mix relative to platform expectations \(\mathbb{T}_P\).</li>
+              <li><strong>Engagement</strong> \(\mathcal{S}_{\text{Engage}}\) estimates resonance with the target audience \(\mathbb{T}_A\) via hooks, accessibility cues, and call-to-action design.</li>
+            </ul>
+            <p class="has-text-centered">
+              \[\vec{F}(\hat{P}) = \alpha_1 \mathcal{S}_{\text{Fidelity}}(\hat{P} \mid \mathbb{D}) + \alpha_2 \mathcal{S}_{\text{Align}}(\hat{P} \mid \mathbb{T}_P) + \alpha_3 \mathcal{S}_{\text{Engage}}(\hat{P} \mid \mathbb{T}_A)\]
+            </p>
+            <p>
+              <strong>Balancing these weighted objectives yields a frontier of diverse promotional narratives</strong>, ranging from expert-facing summaries to public-friendly explainers, ready for downstream adaptation by PRAgent.
+            </p>
+          </div>
+          <div>
+            <img src="img/task.png" alt="AutoPR task overview" class="figure-wide">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="benchmark">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">PRBench Benchmark</h2>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-nine-tenths">
+          <div class="content has-text-justified">
+            <p>
+              PRBench evaluates automatic promotion systems with expert-curated scores that cover the full lifecycle of science communication.
+            </p>
+            <ul>
+              <li>
+                <strong>Fidelity</strong> checks that promotional posts stay truthful to the source paper:
+                <ul>
+                  <li><strong><em>Authorship &amp; Title Accuracy</em></strong> verifies correct attribution and prominent mention of researchers and paper title.</li>
+                  <li><strong><em>Weighted Factual Checklist</em></strong> scores coverage of expert-authored claims, emphasizing high-weight scientific contributions.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Alignment</strong> captures whether content fits platform conventions and channel strategy:
+                <ul>
+                  <li><strong><em>Contextual Relevance</em></strong> examines tone, pacing, and jargon against audience expectations.</li>
+                  <li><strong><em>Visual-Text Integration</em></strong> inspects how captions and imagery reinforce each other for the target feed.</li>
+                  <li><strong><em>Hashtag &amp; Mention Strategy</em></strong> reviews tagging choices that drive discoverability.</li>
+                  <li><strong><em>Platform Interest</em></strong> pairwise comparisons estimate which post a platform-native audience would prefer.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Engagement</strong> tests the persuasive strength of the message:
+                <ul>
+                  <li><strong><em>Engagement Hook Strength</em></strong> looks at the opening line’s ability to grab attention.</li>
+                  <li><strong><em>Logical Attractiveness</em></strong> measures narrative clarity and flow.</li>
+                  <li><strong><em>Visual Attractiveness</em></strong> rates originality and information density of shared media.</li>
+                  <li><strong><em>Call-To-Action Score</em></strong> checks whether readers are guided to meaningful follow-ups.</li>
+                  <li><strong><em>Professional Interest</em></strong> and <strong><em>Broader Interest</em></strong> pairwise wins gauge appeal to expert and public audiences respectively.</li>
+                </ul>
+              </li>
+            </ul>
+            <p>
+              Every sub-score is assigned by three trained annotators, with disagreements reconciled to build a dependable gold standard for PRBench and its stratified PRBench-Core subset.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="framework">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">PRAgent Framework</h2>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              PRAgent is a modular agentic workflow spanning three stages:
+            </p>
+            <ol>
+              <li><strong>Content Extraction</strong>: hierarchical parsing condenses long-form papers and pairs visuals with captions.</li>
+              <li><strong>Multi-Agent Synthesis</strong>: specialized agents draft logical narratives, analyze visuals, and enrich tone.</li>
+              <li><strong>Platform Adaptation</strong>: orchestration agents tailor hooks, hashtags, and pacing to each channel.</li>
+            </ol>
+          </div>
+          <div>
+            <img src="img/pipeline.png" alt="PRAgent pipeline" class="figure-wide">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Evaluation and Insights</h2>
+        </div>
+      </div>
+      <div class="evaluation-section">
+        <div class="evaluation-block">
+          <h3 class="title is-4">What is LLM's limitations for academic promotion generation?</h3>
+          <div class="evaluation-body">
+            <div class="evaluation-text content has-text-justified">
+              <p>
+                Direct prompting across the 512-sample PRBench benchmark shows that frontier LLMs still fall short of human-crafted promotion posts. The companion PRBench-Core subset (128 stratified samples) exposes the same failure patterns while enabling rapid iteration.
+              </p>
+              <ul class="insight-list">
+                <li><strong>Factual gaps dominate.</strong> Numerical, methodological, and terminology errors make up over 90% of inaccuracies for models such as Qwen-2.5-VL-32B-Ins., revealing difficulty in preserving the precise contributions of each paper.</li>
+                <li><strong>Engagement tactics plateau.</strong> LLMs repeatedly choose generic hook strategies instead of tailoring flows to audience intent, leaving logical and visual attractiveness below human-authored references.</li>
+                <li><strong>Platform cues stay off-target.</strong> Generated hashtags share only 0.0347 Jaccard similarity with the originals, indicating shallow alignment with the discovery mechanisms of expert communities.</li>
+              </ul>
+              <p>
+                To score these behaviors at scale we adopt Qwen-2.5-VL-72B-Inst. as the automatic judge. Its decisions correlate with human ratings up to 0.98 on factual accuracy and 0.75 on authorship fidelity, giving us reliable signal across PRBench and PRBench-Core.
+              </p>
+            </div>
+            <img src="img/limitation.png" alt="Error analysis on PRBench covering factual drift, hook choices, and hashtag mismatch">
+            <p class="figure-caption">LLM failures on PRBench concentrate on missing precise facts, over-using generic engagement hooks, and diverging from human hashtag choices.</p>
+          </div>
+        </div>
+        <div class="evaluation-block">
+          <h3 class="title is-4">Agent can improve automatic promotion quality.</h3>
+          <div class="evaluation-body">
+            <div class="evaluation-text content has-text-justified">
+              <p>
+                PRAgent orchestrates content extraction, multi-agent synthesis, and platform adaptation to remediate the above shortcomings. We evaluate 12 competitive LLM backbones on PRBench-Core for fast comparison and confirm the same ordering on the full 512-sample PRBench.
+              </p>
+              <ul class="insight-list">
+                <li><strong>Cross-model gains.</strong> PRAgent adds at least 7.15 percentage points over direct prompting across all backbones and exceeds 20 points with GPT-5-mini, lifting average scores into the mid-to-high 70s.</li>
+                <li><strong>Each stage matters.</strong> Ablations on Qwen-2.5-VL-32B-Ins. show platform adaptation drives alignment from 71.36 to 79.38 and structured content extraction raises fidelity from 66.38 to 70.76.</li>
+                <li><strong>Scales to full PRBench.</strong> The same ordering observed on PRBench-Core carries over to the 512-sample benchmark, showing that PRAgent generalizes beyond the rapid subset.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="evaluation-gallery">
+            <img src="img/prbench-core.png" alt="PRAgent outperforming direct prompting across metrics on PRBench-Core">
+            <img src="img/prbench-full.png" alt="Comprehensive PRAgent results on the full PRBench benchmark">
+          </div>
+          <p class="figure-caption">Top: PRAgent lifts fidelity, engagement, and alignment metrics over direct prompting for every backbone on PRBench-Core. Bottom: The same ordering holds on the full 512-sample PRBench benchmark.</p>
+        </div>
+        <div class="evaluation-block">
+          <h3 class="title is-4">Real-world deployment on RedNote.</h3>
+          <div class="evaluation-body">
+            <div class="evaluation-text content has-text-justified">
+              <p>
+                To validate practicality we ran a 10-day RedNote study with paired accounts posting identical daily papers. PRAgent powered one account, while the baseline relied on direct prompting with the same GPT-5 backbone.
+              </p>
+              <ul class="insight-list">
+                <li><strong>Sustained engagement lift.</strong> PRAgent posts consistently outperformed the baseline on likes, saves, and shares for every paper in the study.</li>
+                <li><strong>Audience growth.</strong> Total watch time increased by 604 percent and profile visitors by 575 percent relative to the direct prompting account.</li>
+                <li><strong>Stable workflow.</strong> Both accounts consumed identical model budgets, highlighting that gains come from workflow design rather than brute-force scaling.</li>
+              </ul>
+            </div>
+            <img src="img/real_exp.png" alt="RedNote A/B test comparing PRAgent with direct prompting">
+            <p class="figure-caption">Real-world RedNote deployment: PRAgent drives higher interactions per paper and sustained audience growth compared to direct prompting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="citation">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Citation</h2>
+          <p>If you find AutoPR helpful, please cite our work.</p>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <pre style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; white-space: pre-wrap;">
+@article{chen2025autopr,
+  title={AutoPR: Let's Automate Your Academic Promotion!},
+  author={Chen, Qiguang and Yan, Zheng and Yang, Mingda and Qin, Libo and Yuan, Yixin and Li, Hanjing and Liu, Jinhao and Ji, Yiyan and Peng, Dengyun and Guan, Jiannan and Hu, Mengkang and Du, Yantao and Che, Wanxiang},
+  journal={Manuscript},
+  year={2025},
+  note={\url{https://autopr.github.io}}
+}
+          </pre>
+          <div style="text-align: right; margin-top: 10px;">
+            <a class="ext-link" href="files/autopr.bib" download>Download BibTeX</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Contact</h2>
+      <p>
+        Please create Github issues here or email <a href="mailto:charleschen2333@gmail.com"> Qiguang Chen </a> or <a href="mailto:zyan@ir.hit.edu.cn"> Zheng Yan </a>, or open up an issue on <a href="https://github.com/LightChen233/AutoPR/issues">Github</a> if you have any questions or suggestions. 
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="Acknowledgement">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgement</h2>
+      <p>
+        This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, <a href="https://llava-rlhf.github.io/">LLaVA-RLHF</a>, and <a href="https://lightchen233.github.io/m3cot.github.io/">M<sup>3</sup>CoT</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+
+      <p>
+        <b>Usage and License Notices</b>: The data, code and checkpoints are intended and licensed for research use only. Please ensure compliance with the corresponding licenses when using PRBench, PRAgent, or other AutoPR assets.
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>Copyright 2025 AutoPR Team. Built with care following the M<sup>3</sup>CoT style.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
