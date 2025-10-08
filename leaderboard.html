@@ -2,65 +2,121 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leaderboard | AutoPR</title>
-  <link rel="icon" href="img/autopr_logo.png" type="image/png">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="./LLaVA_files/bulma.min.css">
-  <link rel="stylesheet" href="./LLaVA_files/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | AutoPR</title>
+    <link rel="icon" href="img/autopr_logo.png" type="image/png">
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css"
+        integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"
+        defer></script>
 </head>
 
 <body>
-  <div id="nav">
-    <div id="icon">
-      <img src="img/autopr_logo_alpha.png" alt="AutoPR logo">
-      <a class="nav-button" href="index.html#home" style="margin-left: 6px; font-size: 24px">AutoPR</a>
-    </div>
-    <div>
-      <a class="nav-button" href="index.html#home">Home</a>
-      <a class="nav-button" href="index.html#highlights">Highlights</a>
-      <a class="nav-button" href="index.html#task">Task</a>
-      <a class="nav-button" href="index.html#benchmark">Benchmark</a>
-      <a class="nav-button" href="index.html#framework">Framework</a>
-      <a class="nav-button" href="index.html#results">Results</a>
-      <a class="nav-button" href="showcase.html">Showcase</a>
-      <a class="nav-button" href="index.html#resources">Resources</a>
-      <a class="nav-button" href="index.html#citation">Citation</a>
-      <a class="nav-button" href="index.html#contact">Contact</a>
-    </div>
-  </div>
-
-  <div id="body">
-    <section class="section" style="margin-top: 120px;">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-six-fifths">
-            <h1 class="title is-2">AutoPR Leaderboard</h1>
-            <p style="margin-top: 18px;">
-              We are refreshing the AutoPR leaderboard to incorporate the latest evaluation criteria.
-              During this update the results are offline.
-            </p>
-          </div>
+    <div id="nav">
+        <div id="icon">
+            <img src="img/autopr_logo_alpha.png" alt="AutoPR logo">
+            <a class="nav-button" href="index.html#home" style="margin-left: 6px; font-size: 24px">AutoPR</a>
         </div>
+        <div>
+            <a class="nav-button" href="index.html#home">Home</a>
+            <a class="nav-button" href="index.html#highlights">Highlights</a>
+            <a class="nav-button" href="index.html#task">Task</a>
+            <a class="nav-button" href="index.html#benchmark">Benchmark</a>
+            <a class="nav-button" href="leaderboard.html">Leaderboard</a>
+            <a class="nav-button" href="index.html#framework">Framework</a>
+            <a class="nav-button" href="index.html#results">Results</a>
+            <a class="nav-button" href="showcase.html">Showcase</a>
+            <a class="nav-button" href="https://huggingface.co/spaces/yzweak/AutoPR" target="_blank">Demo</a>
+            <a class="nav-button" href="index.html#citation">Citation</a>
+            <a class="nav-button" href="index.html#contact">Contact</a>
+        </div>
+    </div>
 
-        <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
-          <div class="column is-six-fifths">
+    <main class="leaderboard-page">
+        <section class="leaderboard-hero">
+            <h1 class="title is-1">AutoPR Leaderboard</h1>
+            <p class="subtitle">
+                Comprehensive comparison of AutoPR systems on PRBench-Core and PRBench-Full. Metrics are reported as percentages unless specified.
+            </p>
+            <div class="toggle-buttons" role="group" aria-label="Leaderboard split toggle">
+                <button id="btn-core" class="toggle-button active" type="button">PRBench-Core</button>
+                <button id="btn-full" class="toggle-button" type="button">PRBench-Full</button>
+            </div>
+        </section>
+
+        <section class="leaderboard-intro">
             <p>
-              The leaderboard is temporarily unavailable while we update our evaluation pipeline. Please check back soon.
+                <strong>Evaluation scope.</strong> Scores are reported on PRBench-Core and PRBench-Full test splits with all metrics expressed as percentages unless noted otherwise.
             </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+            <p>
+                📬 Share new results via <a href="mailto:charleschen2333@gmail.com">Qiguang Chen</a> or <a href="mailto:zyan@ir.hit.edu.cn">Zheng Yan</a>, or open an issue on
+                <a href="https://github.com/LightChen233/AutoPR/issues" target="_blank" rel="noopener">GitHub</a>.
+            </p>
+            <p>
+                ⚠️ Leaderboard entries are curated manually from papers and user submissions—please double-check any numbers you rely on and let us know if corrections are needed.
+            </p>
+        </section>
 
-  <footer class="footer" style="margin-top: 60px;">
-    <div class="content has-text-centered">
-      <p>Copyright 2025 AutoPR Team.</p>
+        <section class="leaderboard-insights">
+            <div class="insight-card timeline-card">
+                <h2>Leaderboard Timeline</h2>
+                <p class="timeline-note">Curate the milestones.</p>
+                <div class="timeline" id="leaderboard-timeline" aria-live="polite"></div>
+            </div>
+            <div class="insight-card chart-card">
+                <h2>SOTA Progress (Avg.)</h2>
+                <p class="chart-note chart-note--top">
+                    Charts track the running SOTA averages.
+                </p>
+                <div class="chart-block">
+                    <h3 class="chart-subtitle">PRBench-Core</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="leaderboard-sota-core" height="220" aria-label="PRBench-Core SOTA progression" role="img"></canvas>
+                    </div>
+                </div>
+                <div class="chart-block">
+                    <h3 class="chart-subtitle">PRBench-Full</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="leaderboard-sota-full" height="220" aria-label="PRBench-Full SOTA progression" role="img"></canvas>
+                    </div>
+                </div>
+                <p class="chart-note">Each curve shows the best Avg. reported up to that date for the selected split.</p>
+            </div>
+        </section>
+
+        <section class="leaderboard-table-wrapper">
+            <table class="js-sort-table leaderboard-table" id="leaderboard-table">
+                <thead>
+                    <tr id="leaderboard-category-row"></tr>
+                    <tr id="leaderboard-header-row"></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <p class="leaderboard-note">
+                <strong>PRAgent rows</strong> correspond to AutoPR agents built on top of the base models listed directly above them.
+                <strong>Human-authored posts</strong> provide a reference upper bound collected from the test split.
+            </p>
+            <p class="leaderboard-note">
+                Superscripts <sup>R</sup> and <sup>T</sup> denote reasoning and textual-modality models, respectively.
+                Boldface marks the best score per metric.
+                For models with a <sup>T</sup> superscript evaluated with <strong>PRAgent</strong>, Gemini-2.5-Pro serves as the vision backbone.
+            </p>
+        </section>
+    </main>
+
+    <div id="footer">
+        &copy; AutoPR 2025 &middot; All rights reserved.
     </div>
-  </footer>
+
+    <script src="javascript/leaderboard-data.js" defer></script>
+    <script src="javascript/sort-table.js" defer></script>
+    <script src="javascript/leaderboard.js" defer></script>
 </body>
 
 </html>
